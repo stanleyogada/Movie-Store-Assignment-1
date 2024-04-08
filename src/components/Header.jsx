@@ -1,0 +1,110 @@
+import logo from "../assets/logo.png";
+import avatar from "../assets/avatar.png";
+import { HiHome, HiMagnifyingGlass, HiPlayCircle, HiTv } from "react-icons/hi2";
+import { HiDotsVertical } from "react-icons/hi";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { CiLogin } from "react-icons/ci";
+import HeaderItems from "./HeaderItems";
+import { useState } from "react";
+const menu = [
+  {
+    name: "HOME",
+    icon: HiHome,
+    link: "/",
+  },
+  {
+    name: "SEARCH",
+    icon: HiMagnifyingGlass,
+  },
+
+  {
+    name: "MOVIES",
+    icon: HiPlayCircle,
+    link: "/movies",
+  },
+  {
+    name: "TV Shows",
+    icon: HiTv,
+    link: "/tvshows",
+  },
+  {
+    name: "Login",
+    icon: CiLogin,
+    link: "/login",
+  },
+  {
+    name: "Sign Up",
+    icon: AiOutlineUsergroupAdd,
+    link: "/signup",
+  },
+];
+const Header = () => {
+  const [toggle, setToggle] = useState(false);
+  return (
+    <div className=" flex items-center justify-between p-5">
+      <div className=" flex items-center gap-8 ">
+        {/* <img
+          src={logo}
+          className=" w-[80px] md:w-[115px] object-cover"
+          alt=""
+        /> */}
+        <h2 className=" text-white pl-5">Movie_Store Logo</h2>
+        {/* Desktop Menu */}
+        <div className=" hidden md:flex gap-8">
+          {menu.map((item, index) => {
+            return (
+              <HeaderItems
+                key={index}
+                name={item.name}
+                Icon={item.icon}
+                link={item.link}
+              />
+            );
+          })}
+        </div>
+        {/*End of Desktop Menu */}
+        {/* Mobile Menu */}
+        <div className="  flex md:hidden gap-5">
+          {menu.map(
+            (item, index) =>
+              index <= 1 && (
+                <HeaderItems
+                  key={index}
+                  name={""}
+                  Icon={item.icon}
+                  link={item.link}
+                />
+              )
+          )}
+          {/* Three Dot Icon */}
+          <div className=" md:hidden" onClick={() => setToggle(!toggle)}>
+            <HeaderItems name={""} Icon={HiDotsVertical} />
+            {/* Dropdown Menu */}
+            {toggle && (
+              <div className=" absolute mt-3 bg-[#121212] border-[1px] border-gray-700 p-3 px-5 py-4">
+                {menu.map(
+                  (item, index) =>
+                    index > 1 && (
+                      <HeaderItems
+                        key={index}
+                        name={item.name}
+                        Icon={item.icon}
+                        link={item.link}
+                      />
+                    )
+                )}
+              </div>
+            )}
+            {/* End of Dropdown Menu */}
+          </div>
+          {/* End of Three Dot Icon */}
+        </div>
+        {/*End of Mobile Menu */}
+      </div>
+
+      <img src={avatar} className=" w-[40px] rounded-full" alt="" />
+    </div>
+  );
+};
+
+export default Header;
