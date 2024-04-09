@@ -4,38 +4,50 @@ import { useState } from "react";
 import { AiTwotoneEye, AiTwotoneEyeInvisible } from "react-icons/ai";
 import FormInput from "../components/FormInput";
 import SubmitBtn from "../components/SubmitBtn";
+import useRegister from "../hooks/useRegister";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const { register, handleSubmit, isSubmitting } = useRegister();
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
   return (
     <section className=" grid lg:grid-cols-2 place-items-center m-0 ">
-      <form className="my-10 md:my-0 p-3 flex flex-col gap-y-4 w-[95vw] mx-auto md:w-9/12 ">
+      <form
+        className="my-10 md:my-0 p-3 flex flex-col gap-y-4 w-[95vw] mx-auto md:w-9/12 "
+        onSubmit={handleSubmit()}
+      >
         <h1 className=" text-2xl lg:text-3xl font-bold text-center mb-3 text-white">
           Hello! Create an Account
         </h1>
         <FormInput
           type="text"
           label="First Name"
-          name="first_name"
           size="input-md"
+          {...register("firstName", { required: "First name is required" })}
         />
         <FormInput
           type="text"
           label="Last Name"
-          name="last_name"
           size="input-md "
+          {...register("lastName", { required: "Last name is required" })}
         />
-        <FormInput type="email" label="Email" name="email" size="input-md" />
+        <FormInput
+          type="email"
+          label="Email"
+          name="email"
+          size="input-md"
+          {...register("email", { required: "Email is required" })}
+        />
         <div className=" relative">
           <FormInput
             type={showPassword ? "text" : "password"}
             label="Password"
-            name="password"
             size="input-md"
+            {...register("password", { required: "Password is required" })}
           />
           <span
             className=" absolute right-4 bottom-4 cursor-pointer text-secondary"
@@ -49,7 +61,7 @@ const Signup = () => {
           </span>
         </div>
         <div className=" mt-3">
-          <SubmitBtn text="Register" />
+          <SubmitBtn text="Register" disabled={isSubmitting} />
         </div>
         <p className="text-center font-semibold text-white">
           Already a Member?
