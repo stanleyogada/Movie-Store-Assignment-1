@@ -31,13 +31,13 @@ function UserDashboard() {
               alt="avatar"
             />
             <h5 className="mb-1 text-xl font-medium text-gray-900 ">
-              {user?.firstName || `Zechariah`}
+              {user?.firstName || `Emma`}
             </h5>
             <h5 className="mb-1 text-xl font-medium text-gray-900 ">
-              {user?.lastName || `Hounwanou`}
+              {user?.lastName || `Emma`}
             </h5>
             <span className="text-base text-gray-500 ">
-              {user?.email || `zechariahhounwanou@gmail.com`}
+              {user?.email || `emma@gmail.com`}
             </span>
             <div className=" grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-4 text-center">
               <div>
