@@ -1,4 +1,6 @@
-const FormInput = ({ name, label, type, defaultValue, size }) => {
+import { forwardRef } from "react";
+
+const FormInput = forwardRef(({ label, size, ...rest }, ref) => {
   return (
     <>
       <label className="form-control">
@@ -6,14 +8,15 @@ const FormInput = ({ name, label, type, defaultValue, size }) => {
           <span className="label-text text-white">{label}</span>
         </div>
         <input
-          type={type}
-          name={name}
-          defaultValue={defaultValue}
+          ref={ref}
           className={`${size} input input-bordered w-full rounded-md p-4`}
+          {...rest}
         />
       </label>
     </>
   );
-};
+});
+
+FormInput.displayName = "FormInput";
 
 export default FormInput;

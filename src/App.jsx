@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home, Login, Movies, Signup, SingleDetails, TVShows } from "./Pages";
+import UserDashboard from "./components/UserDashboard";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/:id",
     element: <SingleDetails />,
+  },
+  {
+    path: "/me",
+    element: <UserDashboard />,
   },
 ]);
 function App() {

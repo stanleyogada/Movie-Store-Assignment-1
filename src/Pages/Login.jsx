@@ -4,27 +4,40 @@ import { useState } from "react";
 import { AiTwotoneEye, AiTwotoneEyeInvisible } from "react-icons/ai";
 import FormInput from "../components/FormInput";
 import SubmitBtn from "../components/SubmitBtn";
+import useLogin from "../hooks/useLogin";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { register, handleSubmit, isSubmitting } = useLogin();
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
   return (
     <section className=" grid lg:grid-cols-2 place-items-center m-0 ">
-      <form className="my-10 md:my-0 p-3 flex flex-col gap-y-4 w-[95vw] mx-auto md:w-9/12 ">
+      <form
+        className="my-10 md:my-0 p-3 flex flex-col gap-y-4 w-[95vw] mx-auto md:w-9/12 "
+        onSubmit={handleSubmit()}
+      >
         <h1 className=" text-2xl lg:text-3xl font-bold text-center mb-3 text-white">
           Welcome Back, Login!
         </h1>
 
-        <FormInput type="email" label="Email" name="email" size="input-md" />
+        <FormInput
+          type="email"
+          label="Email"
+          name="email"
+          size="input-md"
+          {...register("email", { required: "Email is required" })}
+        />
+
         <div className=" relative">
           <FormInput
             type={showPassword ? "text" : "password"}
             label="Password"
             name="password"
             size="input-md"
+            {...register("password", { required: "Password is required" })}
           />
           <span
             className=" absolute right-4 bottom-4 cursor-pointer text-secondary"
@@ -38,7 +51,7 @@ const Login = () => {
           </span>
         </div>
         <div className=" mt-3">
-          <SubmitBtn text="Login" />
+          <SubmitBtn text="Login" disabled={isSubmitting} />
         </div>
         <p className="text-center font-semibold text-white">
           Do Not Have an Account?
