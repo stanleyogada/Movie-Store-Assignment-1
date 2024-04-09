@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import auth from "../services/core/auth";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import UserLocalDB from "../utils/UserLocalDB";
 
 const useLogin = () => {
   const navigate = useNavigate();
@@ -23,7 +24,10 @@ const useLogin = () => {
   const handleSubmit = () =>
     _handleSubmit(async (data) => {
       try {
-        await auth.login(data.email, data.password);
+        const resData = await auth.login(data.email, data.password);
+
+        UserLocalDB.saveUser(resData);
+
         navigate("/me");
       } catch (error) {
         const message = error?.response.data.message || error.message;

@@ -1,15 +1,33 @@
+import { useEffect, useState } from "react";
+import UserLocalDB from "../utils/UserLocalDB";
+
+const useUserDashboard = () => {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const user = UserLocalDB.getUser();
+    setUser(user);
+  }, []);
+
+  return {
+    user,
+  };
+};
+
 function UserDashboard() {
+  const { user } = useUserDashboard();
+
   return (
     <div>
       Static (Header)
       <br />
       Static (Avatar)
       <br />
-      First Name
+      {user?.firstName}
       <br />
-      Last Name
+      {user?.lastName}
       <br />
-      Email
+      {user?.email}
       <br />
       Static (Number of watched movies)
       <br />
