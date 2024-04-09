@@ -25,8 +25,8 @@ const login = async (email, password) => {
     return {
       id: data.id,
       email: data.email,
-      firstName: "Json Server Response FirstName",
-      lastName: "Json Server Response LastName",
+      firstName: "FirstName",
+      lastName: "LastName",
     };
   }
 
