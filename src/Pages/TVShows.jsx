@@ -1,4 +1,4 @@
-import { Footer, Header, ItemsCard, Slider } from "../components";
+import { CTAction, Footer, Header, ItemsCard, Slider } from "../components";
 import useTvShows from "../hooks/useTvShows";
 
 const TVShows = () => {
@@ -9,6 +9,7 @@ const TVShows = () => {
       <Header />
       <Slider />
       <ItemsCard listing={allTvShows} title="TV Shows" />
+      <CTAction />
       <Footer />
     </>
   );
