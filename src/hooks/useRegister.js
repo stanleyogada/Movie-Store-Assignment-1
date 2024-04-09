@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import auth from "../services/core/auth";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const useRegister = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const useRegister = () => {
     const errorKey = Object.keys(errors)[0];
 
     if (errorKey) {
-      console.log(errors[errorKey].message); // TODO: Toast this message
+      toast.error(errors[errorKey].message); // TODO: Toast this message
     }
   }, [Object.keys(errors).length]);
 
@@ -34,7 +35,7 @@ const useRegister = () => {
       } catch (error) {
         const message = error?.response.data.message || error.message;
 
-        console.log(message); // TODO: Toast this message
+        toast.error(message); // TODO: Toast this message
       }
     });
 

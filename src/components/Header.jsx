@@ -45,10 +45,10 @@ const Header = () => {
       <div className=" flex items-center gap-8 ">
         {/* <img
           src={logo}
-          className=" w-[80px] md:w-[115px] object-cover"
+          className=" w-[40px] h-30 md:h-14 lg:h-10 md:w-[115px] object-cover"
           alt=""
         /> */}
-        <h2 className=" text-white pl-5">Movie_Store Logo</h2>
+        <h2 className=" text-white pl-5">Movie_Store </h2>
         {/* Desktop Menu */}
         <div className=" hidden md:flex gap-8">
           {menu.map((item, index) => {
