@@ -23,11 +23,13 @@ const FeaturedListing = ({ listing, title }) => {
               return (
                 <Fragment key={item.id}>
                   <div className="relative">
-                    <img
-                      src={item.posterImg}
-                      className="rounded-lg  hover:rounded-lg hover:border-[3px] border-gray-400 cursor-pointer "
-                      alt={item.name}
-                    />
+                    <div className="relative w-full h-[300px]">
+                      <img
+                        src={item.posterImg}
+                        className="rounded-lg  hover:rounded-lg hover:border-[3px] border-gray-400 cursor-pointer w-full h-full object-cover object-center"
+                        alt={item.name}
+                      />
+                    </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-black  text-white text-center py-3">
                       {item.name}
                     </div>
