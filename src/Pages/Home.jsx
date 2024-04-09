@@ -18,9 +18,10 @@ const Home = () => {
       <Header />
       <Slider />
       <FeaturedListing title="Featured Movies" listing={allFeaturedMovies} />
-      <ItemListing title="Movies" link="/movies" listing={allMovies} />
       <ProductionHouse />
+      <ItemListing title="Movies" link="/movies" listing={allMovies} />
       <FeaturedListing title="Featured TVShows" listing={allFeaturedTvShows} />
+      <Slider />
       <ItemListing title="TV Shows" link="/tvshows" listing={allTvShows} />
       <CTAction />
       <Footer />
