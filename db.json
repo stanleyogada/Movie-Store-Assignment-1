@@ -85,6 +85,18 @@
       "id": "0b4d",
       "email": "asdas@sfdfs.com",
       "password": "sasd"
+    },
+    {
+      "id": "164d",
+      "email": "chineduogada@gmail.com",
+      "password": "sad",
+      "firstName": "Stanley",
+      "lastName": "Chinedu"
+    },
+    {
+      "id": "7ed5",
+      "email": "asdad@fdm.com",
+      "password": "qasdsd"
     }
   ]
 }

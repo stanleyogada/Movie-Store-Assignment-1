@@ -13,7 +13,7 @@ const register = async (email, password, firstName, lastName) => {
 };
 
 const login = async (email, password) => {
-  const { data } = await http.post(
+  let { data } = await http.post(
     getServiceCorePath("/users", "/api/v1/auth/login"),
     {
       email,
@@ -22,7 +22,7 @@ const login = async (email, password) => {
   );
 
   if (!data.data) {
-    return {
+    data.data = {
       id: data.id,
       email: data.email,
       firstName: "FirstName",
