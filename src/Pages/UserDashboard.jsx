@@ -1,27 +1,7 @@
-import { useEffect, useState } from "react";
-import UserLocalDB from "../utils/UserLocalDB";
 import { CTAction, Footer, Header } from "../components";
 import avatar from "../assets/avatar.png";
 import { Link } from "react-router-dom";
-
-const useUserDashboard = () => {
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-    const user = UserLocalDB.getUser();
-    setUser(user);
-  }, []);
-
-  const handleSignOut = () => {
-    UserLocalDB.saveUser(null);
-    setUser(null);
-  };
-
-  return {
-    user,
-    handleSignOut,
-  };
-};
+import useUserDashboard from "../hooks/useUserDashboard";
 
 function UserDashboard() {
   const { user, handleSignOut } = useUserDashboard();

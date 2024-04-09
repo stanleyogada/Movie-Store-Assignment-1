@@ -1,49 +1,7 @@
 import { CTAction, Footer, Header, ItemsCard } from "../components";
 import FormInput from "../components/FormInput";
-import { useForm } from "react-hook-form";
-import movies from "../services/core/movies";
-import useFetchData from "../hooks/useFetchData";
-import { useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
-import { toast } from "react-toastify";
-
-const useSearch = () => {
-  const {
-    register,
-    getValues,
-    handleSubmit: _handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm();
-
-  const { data: results, handleFetchData: handleSearch } = useFetchData(() =>
-    movies.searchMoviesByTitle(getValues("query"))
-  );
-
-  useEffect(() => {
-    if (errors.query) {
-      toast.error(errors.query.message);
-    }
-  }, [Object.keys(errors).length]);
-
-  useEffect(() => {
-    if (results.error) {
-      toast.error(results.error);
-    }
-  }, [results.error]);
-
-  const handleSubmit = () =>
-    _handleSubmit(() => {
-      handleSearch();
-    });
-
-  return {
-    isSubmitting,
-    register,
-    handleSubmit,
-    query: getValues("query"),
-    results,
-  };
-};
+import useSearch from "../hooks/useSearch";
 
 function Search() {
   const { register, handleSubmit, isSubmitting, query, results } = useSearch();

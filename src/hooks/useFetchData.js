@@ -4,7 +4,7 @@ const useFetchData = (service) => {
   const [data, setData] = useState({
     data: null,
     error: null,
-    isLoading: true,
+    isLoading: false,
   });
 
   const handleFetchData = async () => {
