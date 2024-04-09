@@ -45,7 +45,7 @@ function UserDashboard() {
                   {user.lastName}
                 </h5>
                 <span className="text-base text-gray-500 ">{user.email}</span>
-                <div className=" grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-4 text-center">
+                <div className=" grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-4 text-center text-gray-500 mt-5">
                   <div>
                     <h2 className=" pb-2">Movies Watched</h2>
                     <p>29</p>
