@@ -17,10 +17,12 @@ const ItemsCard = ({ listing, title }) => {
 
       {data && (
         <div className=" p-2 px-6 md:px-12 ">
-          <h2 className=" text-xl md:text-2xl lg:text-3xl font-bold my-3 text-white">
-            {title}
-          </h2>
-          <div className=" grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 ">
+          {title && (
+            <h2 className=" text-xl md:text-2xl lg:text-3xl font-bold my-3 text-white">
+              {title}
+            </h2>
+          )}
+          <div className=" grid gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 ">
             {data.map((item) => {
               return (
                 <Link to={`/${item.id}`} key={item.id} className="relative">

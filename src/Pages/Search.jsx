@@ -1,4 +1,4 @@
-import { CTAction, Footer, Header } from "../components";
+import { CTAction, Footer, Header, ItemsCard } from "../components";
 import { Link } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import { useForm } from "react-hook-form";
@@ -54,9 +54,7 @@ function Search() {
       <Header />
 
       <main
-        className={`container mx-auto px-4 pb-[${
-          results.data ? "50px" : "50vh"
-        }]`}
+        className={`container mx-auto px-4 pb-10 md:pb-20 md:px-8 lg:px-20 min-h-[50vh]`}
       >
         <form
           className="my-10 md:my-0 p-3 flex flex-col gap-y-4 w-[95vw] mx-auto md:w-9/12 "
@@ -87,35 +85,16 @@ function Search() {
 
         {results.data && (
           <>
-            <h2 className="text-2xl font-bold text-center">
-              Search results for {query}
+            <h2 className="text-2xl text-center my-5 text-white">
+              Search results for &quot;{query}&quot;
             </h2>
 
-            <h3 className="text-xl font-bold text-center">
-              Found {results.length} results
-            </h3>
-
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {results.data.map((result) => (
-                <li key={result.id} className="relative">
-                  <Link to={`/movie/${result.id}`} className="relative">
-                    <div className="relative w-full h-[300px]">
-                      <img
-                        src={result.posterImg}
-                        alt={result.name}
-                        className="rounded-lg hover:rounded-lg hover:border-[3px] border-gray-400 cursor-pointer w-full h-full object-cover object-center"
-                      />
-                    </div>
-
-                    <div className="absolute bottom-0 left-0 right-0 bg-black text-white text-center py-3">
-                      {result.name}
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <p className="text-xl text-center mb-5 text-white">
+              Found <b>{results.data.length}</b> results
+            </p>
           </>
         )}
+        <ItemsCard listing={results} />
       </main>
 
       <CTAction />

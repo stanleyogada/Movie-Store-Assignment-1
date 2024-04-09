@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 const ItemListing = ({ listing, title, link }) => {
   const { data, isLoading } = listing;
 
+  console.log({ isLoading });
+
   return (
     <>
       {isLoading && (
