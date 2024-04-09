@@ -3,6 +3,7 @@ import auth from "../services/core/auth";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserLocalDB from "../utils/UserLocalDB";
+import { toast } from "react-toastify";
 
 const useLogin = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const useLogin = () => {
     const errorKey = Object.keys(errors)[0];
 
     if (errorKey) {
-      console.log(errors[errorKey].message); // TODO: Toast this message
+      toast.error(errors[errorKey].message); // TODO: Toast this message
     }
   }, [Object.keys(errors).length]);
 
@@ -32,7 +33,7 @@ const useLogin = () => {
       } catch (error) {
         const message = error?.response.data.message || error.message;
 
-        console.log(message); // TODO: Toast this message
+        toast.error(message); // TODO: Toast this message
       }
     });
 

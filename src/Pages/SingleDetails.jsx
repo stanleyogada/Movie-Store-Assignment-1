@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Footer, Header, Slider } from "../components";
+import { CTAction, Footer, Header, Slider } from "../components";
 import { getSingleDetails } from "../utils/custonFetcth";
 import { useEffect, useState } from "react";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
@@ -47,15 +47,16 @@ const SingleDetails = () => {
           </h1>
           <p className=" font-medium text-base ">{detail?.overview}</p>
           <div className=" flex items-center gap-6 justify-center lg:justify-start">
-            <button className=" text-[#131520] shadow-none border-none">
+            <button className=" text-sm md:text-lg text-[#131520] shadow-none border-none">
               Rent $18.99
             </button>
-            <button className=" text-[#131520] shadow-none border-none">
+            <button className=" text-sm md:text-lg text-[#131520] shadow-none border-none">
               Purchase $35.99
             </button>
           </div>
         </div>
       </div>
+      <CTAction />
       <Footer />
     </>
   );

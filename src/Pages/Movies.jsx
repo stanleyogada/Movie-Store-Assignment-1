@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ItemsCard, Header, Slider, Footer } from "../components";
+import { ItemsCard, Header, Slider, Footer, CTAction } from "../components";
 import { getTrendingVideos } from "../utils/custonFetcth";
 
 const Movies = () => {
@@ -18,6 +18,7 @@ const Movies = () => {
       <Header />
       <Slider />
       <ItemsCard listing={listing} title="Movies" />
+      <CTAction />
       <Footer />
     </>
   );

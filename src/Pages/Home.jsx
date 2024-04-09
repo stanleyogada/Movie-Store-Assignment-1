@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  CTAction,
   FeaturedListing,
   Footer,
   Header,
@@ -29,6 +30,7 @@ const Home = () => {
       <ProductionHouse />
       <FeaturedListing listing={listing} title="Featured TVShows" />
       <ItemListing listing={listing} title="TV Shows" link="/tvshows" />
+      <CTAction />
       <Footer />
     </>
   );

@@ -1,6 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home, Login, Movies, Signup, SingleDetails, TVShows } from "./Pages";
-import UserDashboard from "./components/UserDashboard";
+import {
+  Home,
+  Login,
+  Movies,
+  Signup,
+  SingleDetails,
+  TVShows,
+  UserDashboard,
+} from "./Pages";
 
 const router = createBrowserRouter([
   {
