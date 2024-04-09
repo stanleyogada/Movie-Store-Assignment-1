@@ -56,6 +56,13 @@ const Header = () => {
         {/* Desktop Menu */}
         <div className=" hidden md:flex gap-8">
           {menu.map((item, index) => {
+            if (
+              (item.name === "Login" || item.name === "Sign Up") &&
+              UserLocalDB.getUser()
+            ) {
+              return null;
+            }
+
             return (
               <HeaderItems
                 key={index}
