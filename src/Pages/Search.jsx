@@ -1,5 +1,4 @@
 import { CTAction, Footer, Header, ItemsCard } from "../components";
-import { Link } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import { useForm } from "react-hook-form";
 import movies from "../services/core/movies";
