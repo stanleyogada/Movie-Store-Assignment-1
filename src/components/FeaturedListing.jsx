@@ -1,31 +1,43 @@
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
+import { Fragment } from "react";
 
 const FeaturedListing = ({ listing, title }) => {
+  const { data, isLoading } = listing;
+
   return (
     <>
-      <div className="mt-5 md:mt-8 p-2 px-6 md:px-12">
-        <div className=" text-xl md:text-2xl lg:text-3xl text-white font-bold my-2 md:my-3 lg:my-5">
-          {title}
+      {isLoading && (
+        <div className="mt-5 md:mt-8 p-2 px-6 md:px-12">
+          <div className="flex justify-center items-center h-96">
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#BE123C]"></div>
+          </div>
         </div>
-        <div className=" grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 ">
-          {listing?.slice(8, 12).map((item, index) => {
-            return (
-              <>
-                <div key={index} className="relative">
-                  <img
-                    src={IMAGE_BASE_URL + item.poster_path}
-                    className="rounded-lg  hover:rounded-lg hover:border-[3px] border-gray-400 cursor-pointer "
-                    alt={item.title || item.name}
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black  text-white text-center py-3">
-                    {item.title || item.name}
+      )}
+
+      {data && (
+        <div className="mt-5 md:mt-8 p-2 px-6 md:px-12">
+          <div className=" text-xl md:text-2xl lg:text-3xl text-white font-bold my-2 md:my-3 lg:my-5">
+            {title}
+          </div>
+          <div className=" grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 ">
+            {data?.map((item) => {
+              return (
+                <Fragment key={item.id}>
+                  <div className="relative">
+                    <img
+                      src={item.posterImg}
+                      className="rounded-lg  hover:rounded-lg hover:border-[3px] border-gray-400 cursor-pointer "
+                      alt={item.name}
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-black  text-white text-center py-3">
+                      {item.name}
+                    </div>
                   </div>
-                </div>
-              </>
-            );
-          })}
+                </Fragment>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

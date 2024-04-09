@@ -49,10 +49,7 @@ const getMovieById = async (id) => {
 
 const getAllTvShows = async () => {
   const { data } = await http.get(
-    getServiceCorePath(
-      "/movies?is_tv_show=true",
-      "/api/v1/movies?is_tv_show=true"
-    )
+    getServiceCorePath("/movies", "/api/v1/movies?is_tv_show=true")
   );
 
   return handleData(data);
@@ -60,10 +57,7 @@ const getAllTvShows = async () => {
 
 const searchMoviesByTitle = async (title) => {
   const { data } = await http.get(
-    getServiceCorePath(
-      `/movies?title=${title}`,
-      `/api/v1/movies?title=${title}`
-    )
+    getServiceCorePath("/movies", `/api/v1/movies?title=${title}`)
   );
 
   return handleData(data);
@@ -71,10 +65,7 @@ const searchMoviesByTitle = async (title) => {
 
 const getAllFeaturedMovies = async () => {
   const { data } = await http.get(
-    getServiceCorePath(
-      "/movies?is_featured=true",
-      "/api/v1/movies?is_featured=true"
-    )
+    getServiceCorePath("/movies", "/api/v1/movies?is_featured=true")
   );
 
   return handleData(data);
@@ -83,7 +74,7 @@ const getAllFeaturedMovies = async () => {
 const getAllFeaturedTvShows = async () => {
   const { data } = await http.get(
     getServiceCorePath(
-      "/movies?is_tv_show=true&is_featured=true",
+      "/movies",
       "/api/v1/movies?is_tv_show=true&is_featured=true"
     )
   );

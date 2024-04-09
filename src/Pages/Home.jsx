@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   CTAction,
   FeaturedListing,
@@ -8,28 +7,21 @@ import {
   ProductionHouse,
   Slider,
 } from "../components";
-import { getTrendingVideos } from "../utils/custonFetcth";
-const Home = () => {
-  const [listing, setListing] = useState([]);
-  const getSliderData = async () => {
-    getTrendingVideos.then((resp) => {
-      setListing(resp.data.results);
-    });
-  };
+import useHome from "../hooks/useHome";
 
-  useEffect(() => {
-    getSliderData();
-  }, []);
+const Home = () => {
+  const { allMovies, allTvShows, allFeaturedMovies, allFeaturedTvShows } =
+    useHome();
 
   return (
     <>
       <Header />
       <Slider />
-      <FeaturedListing listing={listing} title="Featured Movies" />
-      <ItemListing listing={listing} title="Movies" link="/movies" />
+      <FeaturedListing title="Featured Movies" listing={allFeaturedMovies} />
+      <ItemListing title="Movies" link="/movies" listing={allMovies} />
       <ProductionHouse />
-      <FeaturedListing listing={listing} title="Featured TVShows" />
-      <ItemListing listing={listing} title="TV Shows" link="/tvshows" />
+      <FeaturedListing title="Featured TVShows" listing={allFeaturedTvShows} />
+      <ItemListing title="TV Shows" link="/tvshows" listing={allTvShows} />
       <CTAction />
       <Footer />
     </>
