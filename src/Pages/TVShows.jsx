@@ -1,23 +1,14 @@
-import { useEffect, useState } from "react";
-import { getTrendingVideos } from "../utils/custonFetcth";
 import { Footer, Header, ItemsCard, Slider } from "../components";
+import useTvShows from "../hooks/useTvShows";
 
 const TVShows = () => {
-  const [listing, setListing] = useState([]);
-  const getSliderData = async () => {
-    getTrendingVideos.then((resp) => {
-      console.log(resp.data.results);
-      setListing(resp.data.results);
-    });
-  };
-  useEffect(() => {
-    getSliderData();
-  }, []);
+  const { allTvShows } = useTvShows();
+
   return (
     <>
       <Header />
       <Slider />
-      <ItemsCard listing={listing} title="TV Shows" />
+      <ItemsCard listing={allTvShows} title="TV Shows" />
       <Footer />
     </>
   );
