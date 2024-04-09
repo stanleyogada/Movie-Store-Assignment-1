@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const useTvShows = () => {
   const { data: allTvShows, handleFetchData: handleFetchAllTvShows } =
-    useFetchData(movies.getAllTvShows);
+    useFetchData(() => movies.getAllTvShows(true));
 
   useEffect(() => {
     handleFetchAllTvShows();

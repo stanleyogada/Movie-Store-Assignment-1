@@ -31,9 +31,12 @@ const handleData = (axiosData) => {
   return getData(axiosData);
 };
 
-const getAllMovies = async () => {
+const getAllMovies = async (isAll) => {
   const { data } = await http.get(
-    getServiceCorePath("/movies", "/api/v1/movies")
+    getServiceCorePath(
+      "/movies",
+      `/api/v1/movies${isAll ? "" : "?is_featured=false"}`
+    )
   );
 
   return handleData(data);
@@ -47,9 +50,12 @@ const getMovieById = async (id) => {
   return handleData(data);
 };
 
-const getAllTvShows = async () => {
+const getAllTvShows = async (isAll) => {
   const { data } = await http.get(
-    getServiceCorePath("/movies", "/api/v1/movies?is_tv_show=true")
+    getServiceCorePath(
+      "/movies",
+      `/api/v1/movies?is_tv_show=true${isAll ? "" : "&is_featured=false"}`
+    )
   );
 
   return handleData(data);

@@ -16,6 +16,7 @@ const menu = [
   {
     name: "SEARCH",
     icon: HiMagnifyingGlass,
+    link: "/search",
   },
 
   {
