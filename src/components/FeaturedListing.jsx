@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 const FeaturedListing = ({ listing, title }) => {
   const { data, isLoading } = listing;
@@ -21,7 +22,7 @@ const FeaturedListing = ({ listing, title }) => {
           <div className=" grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 ">
             {data?.map((item) => {
               return (
-                <Fragment key={item.id}>
+                <Link to={`/${item.id}`} key={item.id} className="relative">
                   <div className="relative">
                     <div className="relative w-full h-[300px]">
                       <img
@@ -34,7 +35,7 @@ const FeaturedListing = ({ listing, title }) => {
                       {item.name}
                     </div>
                   </div>
-                </Fragment>
+                </Link>
               );
             })}
           </div>
