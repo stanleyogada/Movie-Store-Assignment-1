@@ -3,7 +3,7 @@ import auth from "../services/core/auth";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const useRegister = () => {
+const useLogin = () => {
   const navigate = useNavigate();
 
   const {
@@ -23,14 +23,8 @@ const useRegister = () => {
   const handleSubmit = () =>
     _handleSubmit(async (data) => {
       try {
-        await auth.register(
-          data.email,
-          data.password,
-          data.firstName,
-          data.lastName
-        );
-
-        navigate("/login");
+        await auth.login(data.email, data.password);
+        navigate("/me");
       } catch (error) {
         const message = error?.response.data.message || error.message;
 
@@ -41,4 +35,4 @@ const useRegister = () => {
   return { register, handleSubmit, isSubmitting };
 };
 
-export default useRegister;
+export default useLogin;

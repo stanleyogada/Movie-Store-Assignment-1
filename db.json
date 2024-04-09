@@ -50,6 +50,11 @@
       "password": "1234567890",
       "firstName": "Stanley",
       "lastName": "Chinedu"
+    },
+    {
+      "id": "5469",
+      "email": "chineduogada@gmail.com",
+      "password": "qeqweqweqw"
     }
   ]
 }
