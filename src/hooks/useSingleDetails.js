@@ -14,12 +14,15 @@ const useSingleDetails = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Handle all errors
   useEffect(() => {
     if (singleMovie.error) {
       toast.error(singleMovie.error);
     }
   }, [singleMovie.error]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return {
     singleMovie,
