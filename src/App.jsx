@@ -8,6 +8,7 @@ import {
   TVShows,
   UserDashboard,
 } from "./Pages";
+import Search from "./Pages/Search";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/me",
     element: <UserDashboard />,
+  },
+  {
+    path: "/search",
+    element: <Search />,
   },
 ]);
 function App() {

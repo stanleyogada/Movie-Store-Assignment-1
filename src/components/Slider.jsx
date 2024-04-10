@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { getTrendingVideos } from "../utils/custonFetcth";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+
 const screenWidth = window.innerWidth;
+
+const SLIDE_INTERVAL = Math.floor(Math.random() * 5000 - 2000) + 2000;
+const MAX_SLIDE_COUNT = 20;
+
 const Slider = () => {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
   const [sliderData, setSliderData] = useState([]);
@@ -22,6 +27,39 @@ const Slider = () => {
   const sliderLeft = (element) => {
     element.scrollLeft -= screenWidth - 110;
   };
+
+  const intervalId = useRef(null);
+  const [intervalClickCount, setIntervalClickCount] = useState(0);
+  const [isSlideForward, setIsSlideForward] = useState(true);
+
+  useEffect(() => {
+    intervalId.current = setInterval(() => {
+      if (isSlideForward) {
+        setIntervalClickCount((prev) => prev + 1);
+        sliderRight(elementRef.current);
+      } else {
+        setIntervalClickCount((prev) => prev - 1);
+        sliderLeft(elementRef.current);
+      }
+    }, SLIDE_INTERVAL);
+
+    return () => {
+      clearInterval(intervalId.current);
+    };
+  }, [isSlideForward]);
+
+  useEffect(() => {
+    if (intervalClickCount === MAX_SLIDE_COUNT) {
+      clearInterval(intervalId.current);
+      setIsSlideForward(false);
+    }
+
+    if (intervalClickCount < 0) {
+      clearInterval(intervalId.current);
+      setIsSlideForward(true);
+    }
+  }, [intervalClickCount]);
+
   return (
     <div>
       <HiChevronLeft

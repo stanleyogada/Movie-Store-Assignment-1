@@ -1,4 +1,3 @@
-import logo from "../assets/logo.png";
 import avatar from "../assets/avatar.png";
 import { HiHome, HiMagnifyingGlass, HiPlayCircle, HiTv } from "react-icons/hi2";
 import { HiDotsVertical } from "react-icons/hi";
@@ -6,6 +5,8 @@ import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { CiLogin } from "react-icons/ci";
 import HeaderItems from "./HeaderItems";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import UserLocalDB from "../utils/UserLocalDB";
 const menu = [
   {
     name: "HOME",
@@ -15,6 +16,7 @@ const menu = [
   {
     name: "SEARCH",
     icon: HiMagnifyingGlass,
+    link: "/search",
   },
 
   {
@@ -40,6 +42,9 @@ const menu = [
 ];
 const Header = () => {
   const [toggle, setToggle] = useState(false);
+
+  const avatarLink = UserLocalDB.getUser() ? "/me" : "/login";
+
   return (
     <div className=" flex items-center justify-between p-5">
       <div className=" flex items-center gap-8 ">
@@ -52,6 +57,13 @@ const Header = () => {
         {/* Desktop Menu */}
         <div className=" hidden md:flex gap-8">
           {menu.map((item, index) => {
+            if (
+              (item.name === "Login" || item.name === "Sign Up") &&
+              UserLocalDB.getUser()
+            ) {
+              return null;
+            }
+
             return (
               <HeaderItems
                 key={index}
@@ -102,7 +114,9 @@ const Header = () => {
         {/*End of Mobile Menu */}
       </div>
 
-      <img src={avatar} className=" w-[40px] rounded-full" alt="" />
+      <Link to={avatarLink}>
+        <img src={avatar} className=" w-[40px] rounded-full" alt="" />
+      </Link>
     </div>
   );
 };
